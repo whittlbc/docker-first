@@ -1,11 +1,12 @@
 # Use an official Python runtime as a parent image
 FROM tiangolo/uwsgi-nginx-flask:python2.7
 
-# Install any needed packages specified in requirements.txt
-RUN pip install --trusted-host pypi.python.org -r requirements.txt
+# copy over our requirements.txt file
+COPY requirements.txt /tmp/
 
-# Set the working directory to /app
-WORKDIR /app
+# upgrade pip and install required python packages
+RUN pip install -U pip
+RUN pip install -r /tmp/requirements.txt
 
 # Copy the current directory contents into the container at /app
 COPY ./app /app
