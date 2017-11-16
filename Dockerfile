@@ -1,4 +1,3 @@
-# Use an official Python runtime as a parent image
 FROM tiangolo/uwsgi-nginx-flask:python2.7
 
 # copy over our requirements.txt file
